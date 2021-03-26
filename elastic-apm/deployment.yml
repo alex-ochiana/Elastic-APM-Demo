@@ -2,8 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apm-server
+  labels:
+    app: apm-server
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: apm-server
   template:
     metadata:
       labels:
