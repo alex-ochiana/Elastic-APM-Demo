@@ -12,7 +12,7 @@ defaults:
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: cluster-1
-  GKE_ZONE: europe-west3
+  GKE_ZONE: us-west3-a
   DEPLOYMENT_NAME: web-server
   IMAGE: web-server
 
