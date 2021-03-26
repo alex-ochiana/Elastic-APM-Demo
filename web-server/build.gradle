@@ -23,3 +23,7 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+bootJar {
+   archiveName = "$baseName.$extension"
+}
