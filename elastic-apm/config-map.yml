@@ -14,7 +14,6 @@ data:
       index:
         number_of_shards: 1
         codec: best_compression
-    setup.dashboards.enabled: true
     setup.kibana:
       host: "kibana:5601"
     output.elasticsearch:
