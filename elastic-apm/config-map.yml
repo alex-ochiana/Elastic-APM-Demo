@@ -18,17 +18,17 @@ data:
     setup.kibana:
       host: "kibana:5601"
     output.elasticsearch:
-      hosts: ["elasticsearch:9200"]
+      hosts: ["es-cluster-0:9200","es-cluster-1:9200","es-cluster-2:9200"]
       indices:
         - index: "apm-%{[beat.version]}-sourcemap"
           when.contains:
             processor.event: "sourcemap"
-- index: "apm-%{[beat.version]}-error-%{+yyyy.MM.dd}"
+        - index: "apm-%{[beat.version]}-error-%{+yyyy.MM.dd}"
           when.contains:
             processor.event: "error"
-- index: "apm-%{[beat.version]}-transaction-%{+yyyy.MM.dd}"
+        - index: "apm-%{[beat.version]}-transaction-%{+yyyy.MM.dd}"
           when.contains:
             processor.event: "transaction"
-- index: "apm-%{[beat.version]}-span-%{+yyyy.MM.dd}"
+        - index: "apm-%{[beat.version]}-span-%{+yyyy.MM.dd}"
           when.contains:
             processor.event: "span"
