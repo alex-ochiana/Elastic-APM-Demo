@@ -1,6 +1,7 @@
 name: Deploy Kibana to GKE
 
 on:
+  workflow_dispatch: {}
   push:
     branches: [main]
     paths: [kibana/**, .github/workflows/kibana.yml]

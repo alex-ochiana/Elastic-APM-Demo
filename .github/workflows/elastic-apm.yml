@@ -1,6 +1,7 @@
 name: Deploy Elastic-APM to GKE
 
 on:
+  workflow_dispatch: {}
   push:
     branches: [main]
     paths: [elastic-apm/**, .github/workflows/elastic-apm.yml]

@@ -1,6 +1,7 @@
 name: Build Web-Server and Deploy to GKE
 
 on:
+  workflow_dispatch: {}
   push:
     branches: [main]
     paths: [web-server/**, .github/workflows/web-server.yml]

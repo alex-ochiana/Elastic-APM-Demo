@@ -1,6 +1,7 @@
 name: Deploy ElasticSearch to GKE
 
 on:
+  workflow_dispatch: {}
   push:
     branches: [main]
     paths: [elasticsearch/**, .github/workflows/elasticsearch.yml]
