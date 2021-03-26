@@ -1,25 +1,25 @@
-name: Deploy elastic-kibana to GKE
+name: Deploy Kibana to GKE
 
 on:
   push:
     branches: [main]
-    paths: [elastic-apm/**]
+    paths: [kibana/**]
 
 defaults:
   run:
-    working-directory: elastic-apm
+    working-directory: kibana
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: cluster-1
-  GKE_ZONE: us-west3-a
-  IMAGE: web-server
+  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
+  GKE_ZONE: ${{ secrets.GKE_ZONE }}
+  DEPLOYMENT_NAME: kibana
 
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
-    environment: production
+    environment: kibana-prod
 
     steps:
     - name: Checkout
@@ -52,7 +52,5 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
-        ./kustomize edit set image eu.gcr.io/PROJECT_ID/IMAGE:TAG=eu.gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA
-        ./kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/es-cluster
-        kubectl rollout status deployment/kibana
+        ./kustomize build -f  | kubectl apply -f -
+        kubectl rollout status deployment/$DEPLOYMENT_NAME
