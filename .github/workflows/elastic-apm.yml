@@ -1,25 +1,25 @@
-name: Deploy ElasticSearch to GKE
+name: Deploy Elastic-APM to GKE
 
 on:
   push:
     branches: [main]
-    paths: [elasticsearch/**, .github/workflows/elasticsearch.yml]
+    paths: [elastic-apm/**, .github/workflows/elastic-apm.yml]
 
 defaults:
   run:
-    working-directory: elasticsearch
+    working-directory: elastic-apm
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
   GKE_ZONE: ${{ secrets.GKE_ZONE }}
-  DEPLOYMENT_NAME: es-cluster
+  DEPLOYMENT_NAME: apm-server
 
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
-    environment: elasticsearch-prod
+    environment: elastic-apm-prod
 
     steps:
     - name: Checkout
@@ -53,4 +53,4 @@ jobs:
     - name: Deploy
       run: |-
         ./kustomize build . | kubectl apply -f -
-        kubectl rollout status statefulset/$DEPLOYMENT_NAME
+        kubectl rollout status deployment/$DEPLOYMENT_NAME
