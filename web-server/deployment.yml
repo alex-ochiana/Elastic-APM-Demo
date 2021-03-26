@@ -28,3 +28,17 @@ spec:
             memory: 512Mi
           limits:
             memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 30 
+          periodSeconds: 10
+          timeoutSeconds: 5

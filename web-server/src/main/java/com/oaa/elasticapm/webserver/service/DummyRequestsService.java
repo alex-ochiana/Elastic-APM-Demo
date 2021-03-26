@@ -25,9 +25,10 @@ public class DummyRequestsService {
         RestTemplate restTemplate = new RestTemplate();
         logger.info("Executing requests with " + DELAY_IN_MILLIS + " millis delay between.");
         for (int i = 0; i < 20; i++) {
+            final int index = i;
             executorService.scheduleWithFixedDelay(() -> {
-                String response = restTemplate.getForEntity(BASE_URL + i, String.class).getBody();
-                logger.info("/random/" + i + " - " + response);
+                String response = restTemplate.getForEntity(BASE_URL + index, String.class).getBody();
+                logger.info("/random/" + index + " - " + response);
             }, 120 * DELAY_IN_MILLIS, DELAY_IN_MILLIS, TimeUnit.MILLISECONDS);
         }
     }
