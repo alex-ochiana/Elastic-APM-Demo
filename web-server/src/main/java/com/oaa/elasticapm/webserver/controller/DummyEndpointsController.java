@@ -15,8 +15,12 @@ public class DummyEndpointsController {
 
 	private final static Logger logger = LoggerFactory.getLogger(DummyEndpointsController.class);
 
-    @GetMapping("/random")
-	public DeferredResult<ResponseEntity<String>> random() {
+    @GetMapping("/random/{id}")
+	public DeferredResult<ResponseEntity<String>> random(@PathVariable(value="id") String id) {
+		return waitAndGetResponse();
+	}
+
+	public DeferredResult<ResponseEntity<String>> waitAndGetResponse() {
 		DeferredResult<ResponseEntity<String>> result = new DeferredResult<>();
 		ForkJoinPool.commonPool().submit(() -> {
 			long waitTime = randomDelay();
