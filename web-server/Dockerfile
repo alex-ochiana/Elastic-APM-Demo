@@ -5,7 +5,7 @@ RUN ./gradlew bootJar
 FROM openjdk:11-jre
 COPY --from=BUILD build/libs/web-server.jar /usr/src/elastic-apm-web-server/app.jar
 WORKDIR /usr/src/elastic-apm-web-server
-RUN wget https://search.maven.org/remotecontent?filepath=co/elastic/apm/elastic-apm-agent/1.22.0/elastic-apm-agent-1.22.0.jar
+RUN wget https://repo1.maven.org/maven2/co/elastic/apm/elastic-apm-agent/1.22.0/elastic-apm-agent-1.22.0.jar
 EXPOSE 8080
 CMD ["java", \
     "-javaagent:elastic-apm-agent-1.22.0.jar", \
