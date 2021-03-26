@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: apm-server
@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: apm-server
-        image: docker.elastic.co/apm/apm-server:6.3.1
+        image: docker.elastic.co/apm/apm-server:6.4.3
         ports:
         - containerPort: 8200
           name: apm-port

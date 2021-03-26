@@ -5,11 +5,9 @@ metadata:
   labels:
     app: apm-server
 spec:
+  type: NodePort
+  selector:
+    app: apm-server
   ports:
   - port: 8200
     targetPort: 8200
-    name: http
-    nodePort: 31000
-  selector:
-    app: apm-server
-  type: NodePort
