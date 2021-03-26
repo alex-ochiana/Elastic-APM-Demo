@@ -11,9 +11,8 @@ defaults:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: cluster-1
-  GKE_ZONE: us-west3-a
-  IMAGE: web-server
+  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
+  GKE_ZONE: ${{ secrets.GKE_ZONE }}
   STATEFULSET_NAME: es-cluster
 
 jobs:
@@ -53,6 +52,5 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
-        ./kustomize edit set image eu.gcr.io/PROJECT_ID/IMAGE:TAG=eu.gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status statefulset/$STATEFULSET_NAME
