@@ -18,18 +18,18 @@ public class DummyRequestsService {
     private static final int DELAY_IN_MILLIS = 1000;
     private static final String BASE_URL = "http://localhost:8080/random/";
     private static final Logger logger = LoggerFactory.getLogger(DummyRequestsService.class);
-    private static final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(20);
+    private static final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(10);
 
     @PostConstruct
     public void init() {
         RestTemplate restTemplate = new RestTemplate();
         logger.info("Executing requests with " + DELAY_IN_MILLIS + " millis delay between.");
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 10; i++) {
             final int index = i;
             executorService.scheduleWithFixedDelay(() -> {
                 String response = restTemplate.getForEntity(BASE_URL + index, String.class).getBody();
                 logger.info("/random/" + index + " - " + response);
-            }, 120 * DELAY_IN_MILLIS, DELAY_IN_MILLIS, TimeUnit.MILLISECONDS);
+            }, 15 * DELAY_IN_MILLIS, DELAY_IN_MILLIS, TimeUnit.MILLISECONDS);
         }
     }
 

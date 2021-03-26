@@ -31,7 +31,7 @@ public class DummyEndpointsController {
 	}
 
 	private long randomDelay() {
-		long waitTime = ThreadLocalRandom.current().nextLong(9) + 1;
+		long waitTime = ThreadLocalRandom.current().nextLong(5) + 1;
 		try {
 			  Thread.sleep(waitTime * 1000);
 		} catch (InterruptedException e) {
