@@ -42,6 +42,8 @@ spec:
             value: "es-cluster-0.elasticsearch,es-cluster-1.elasticsearch,es-cluster-2.elasticsearch"
           - name: discovery.zen.minimum_master_nodes
             value: "2"
+          - name: cluster.initial_master_nodes
+            - es-cluster-0
           - name: ES_JAVA_OPTS
             value: "-Xms512m -Xmx512m"
       initContainers:
