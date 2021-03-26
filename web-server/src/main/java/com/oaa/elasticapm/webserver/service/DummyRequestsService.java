@@ -27,7 +27,7 @@ public class DummyRequestsService {
         executorService.scheduleWithFixedDelay(() -> {
             String response = restTemplate.getForEntity(URL, String.class).getBody();
             logger.info(response);
-        }, 5 * DELAY_IN_MILLIS, DELAY_IN_MILLIS, TimeUnit.MILLISECONDS);
+        }, 120 * DELAY_IN_MILLIS, DELAY_IN_MILLIS, TimeUnit.MILLISECONDS);
     }
 
     @PreDestroy
