@@ -3,7 +3,7 @@ name: Deploy Kibana to GKE
 on:
   push:
     branches: [main]
-    paths: [kibana/**]
+    paths: [kibana/**, .github/workflows/kibana.yml]
 
 defaults:
   run:
@@ -52,5 +52,5 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
-        ./kustomize build -f  | kubectl apply -f -
+        ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME

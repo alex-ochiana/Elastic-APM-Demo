@@ -5,8 +5,9 @@ metadata:
   labels:
     app: kibana
 spec:
-  type: LoadBalancer
-  ports:
-  - port: 5601
+  type: NodePort
   selector:
     app: kibana
+  ports:
+  - port: 5601
+    targetPort: 5601

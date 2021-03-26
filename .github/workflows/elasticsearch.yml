@@ -3,7 +3,7 @@ name: Deploy ElasticSearch to GKE
 on:
   push:
     branches: [main]
-    paths: [elastic/**]
+    paths: [elastic/**, .github/workflows/elasticsearch.yml]
 
 defaults:
   run:

@@ -1,7 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
-metadata: 
+metadata:
   name: kibana
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: kibana-ip
+  labels:
+    app: hello
 spec:
   backend:
     serviceName: kibana

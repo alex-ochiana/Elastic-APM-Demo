@@ -3,7 +3,7 @@ name: Build web-server and Deploy to GKE
 on:
   push:
     branches: [main]
-    paths: [web-server/**]
+    paths: [web-server/**, .github/workflows/web-server.yml]
 
 defaults:
   run:
