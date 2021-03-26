@@ -8,13 +8,11 @@ data:
   apm-server.yml: |-
     apm-server:
       host: "0.0.0.0:8200"
-      frontend:
-        enabled: false
     setup.template.settings:
       index:
         number_of_shards: 1
         codec: best_compression
-    setup.kibana:
+    kibana:
       host: "kibana:5601"
     output.elasticsearch:
       hosts: ["elasticsearch:9200"]
