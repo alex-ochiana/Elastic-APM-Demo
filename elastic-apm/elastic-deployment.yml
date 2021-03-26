@@ -3,6 +3,7 @@ kind: StatefulSet
 metadata:
   name: es-cluster
 spec:
+  serviceName: elasticsearch
   replicas: 1
   selector:
     matchLabels:
