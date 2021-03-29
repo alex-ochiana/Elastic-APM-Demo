@@ -17,6 +17,7 @@ spec:
       labels:
         app: web-server
     spec:
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
       - name: web-server
         image: eu.gcr.io/PROJECT_ID/IMAGE:TAG
