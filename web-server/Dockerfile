@@ -10,7 +10,7 @@ EXPOSE 8080
 CMD ["java", \
     "-javaagent:elastic-apm-agent-1.22.0.jar", \
     "-Delastic.apm.service_name=web-server", \
-    "-Delastic.apm.application_packages=org.oaa", \
+    "-Delastic.apm.application_packages=com.oaa", \
     "-Delastic.apm.server_urls=http://apm-server:8200", \
     "-jar", \
     "app.jar"]
